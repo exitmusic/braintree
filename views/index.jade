@@ -6,7 +6,7 @@ block head
 
 block content
     h1 Braintree Credit Card Transaction Form
-    form#payment-form(action="#{braintreeUrl}', method="POST")
+    form#payment-form(action="#{braintreeUrl}", method="POST")
       input(type="hidden", name="tr_data", value="#{trData}")
       div
         h2 Credit Card
