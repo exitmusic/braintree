@@ -1,5 +1,18 @@
 extends layout
 
+block head
+  style(type="text/css")
+    label {display: block;} input {margin-bottom: 10px;}
+
 block content
-  h1= title
-  p Welcome to #{title}
+    h1 Braintree Credit Card Transaction Form
+    form#payment-form(action="#{braintreeUrl}', method="POST")
+      input(type="hidden", name="tr_data", value="#{trData}")
+      div
+        h2 Credit Card
+        label(for="braintree_credit_card_number") Credit Card Number
+        input#braintree_credit_card_number(type="text", name="transaction[credit_card][number]", value="4111111111111111")
+        label(for="braintree_credit_card_exp") Credit Card Expiry (mm/yyyy)
+        input#braintree_credit_card_exp(type="text", name="transaction[credit_card][expiration_date]", value="12/2015")
+      input.submit-button(type="submit")
+
