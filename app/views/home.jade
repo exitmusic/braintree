@@ -17,4 +17,6 @@ block content
   .albumsJSON
     #{albumsJSON.topalbums}
   each album in albumsJSON
-    p #{album.name}
+    h1 #{album.name}
+    .album-image
+      img(src="#{album.image[3]['#text']}")
