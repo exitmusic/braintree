@@ -3,6 +3,14 @@ extends templates/standard
 block append css
 
 block content
+  .albums-list
+    each album in albumsJSON
+      .album
+        h5.name #{album.name}
+        h5.artist #{album.artist.name}
+        .cover
+          img(src="#{album.image[3]['#text']}")
+
   h1 Braintree Credit Card Transaction Form
   form#payment-form(action="#{braintreeUrl}", method="POST")
     input(type="hidden", name="tr_data", value="#{trData}")
@@ -13,10 +21,3 @@ block content
       label(for="braintree_credit_card_exp") Credit Card Expiry (mm/yyyy)
       input#braintree_credit_card_exp(type="text", name="transaction[credit_card][expiration_date]", value="12/2015")
     input.submit-button(type="submit")
-
-  .albumsJSON
-    #{albumsJSON.topalbums}
-  each album in albumsJSON
-    h1 #{album.name}
-    .album-image
-      img(src="#{album.image[3]['#text']}")

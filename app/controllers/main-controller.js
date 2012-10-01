@@ -8,14 +8,9 @@ function routes(app) {
    * Route to Homepage
    */
   app.get('/', function(req, res) {
-
     var albumsList = new Albums('exitmusick', renderAlbums);
+    
     albumsList.getAlbums(req, res);
-    /*res.render('home', {
-        title: 'Braintree Albums',
-        trData: trData, 
-        braintreeUrl: gateway.transparentRedirect.url
-    });*/
   });
   
   /**
