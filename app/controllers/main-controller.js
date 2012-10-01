@@ -2,8 +2,6 @@ var braintree = require('braintree')
   , Albums = require('../models/albums');
 
 function routes(app) {
-  var albums = new Albums('exitmusick', renderAlbums);
-
   /**
    * Route to Homepage
    */
@@ -65,7 +63,7 @@ function renderAlbums(req, res, params) {
   });
 
   res.render('home', {
-    title: 'Braintree Albums',
+    title: 'Buy Me Music',
     trData: trData, 
     braintreeUrl: gateway.transparentRedirect.url,
     albumsJSON: params.albumsJSON
