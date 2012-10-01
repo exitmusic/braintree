@@ -13,7 +13,7 @@ function routes(app) {
    */
   app.get('/', function(req, res) {
     var trData = gateway.transparentRedirect.transactionData({
-      redirectUrl: 'http://localhost:3000/braintree',
+      redirectUrl: 'http://localhost:3000/thanks',
         transaction: {
           type: 'sale',
           amount: '10000.00',
@@ -28,7 +28,7 @@ function routes(app) {
   });
   
   /**
-   * Route to About page (not currently used)
+   * Route to About page
    */
   app.get('/about', function(req, res) {
     res.render('about', {
@@ -37,11 +37,20 @@ function routes(app) {
   });
   
   /**
-   * Route to Contact page (not currently used)
+   * Route to Contact page
    */
   app.get('/contact', function(req, res) {
     res.render('contact', {
         title: 'Contact'
+    });
+  });
+
+  /**
+   * Route to Thanks page
+   */
+  app.get('/thanks', function(req, res) {
+    res.render('thanks', {
+        title: 'Thank You!'
     });
   });
 }
