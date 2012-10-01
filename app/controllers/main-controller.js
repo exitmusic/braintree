@@ -51,8 +51,7 @@ function routes(app) {
  * @method renderAlbums
  * @param {http.ServerRequest} req Instance of Node's HTTP server request class
  * @param {http.ServerResponse} res Instance of Node's HTTP server response class
- * @param {String} params.directory Full path of the directory to display the contents of
- * @param {Array} params.contents The contents of the given directory
+ * @param {Array} params.albumJSON A JSON object containing to top albums
  */
 function renderAlbums(req, res, params) {
   var gateway = braintree.connect({
@@ -74,7 +73,7 @@ function renderAlbums(req, res, params) {
     title: 'Braintree Albums',
     trData: trData, 
     braintreeUrl: gateway.transparentRedirect.url,
-    albumJSON: params.albumJSON
+    albumsJSON: params.albumsJSON
   });
 }
 

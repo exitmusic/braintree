@@ -13,3 +13,8 @@ block content
       label(for="braintree_credit_card_exp") Credit Card Expiry (mm/yyyy)
       input#braintree_credit_card_exp(type="text", name="transaction[credit_card][expiration_date]", value="12/2015")
     input.submit-button(type="submit")
+
+  .albumsJSON
+    #{albumsJSON.topalbums}
+  each album in albumsJSON
+    p #{album.name}
