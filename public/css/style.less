@@ -17,6 +17,7 @@ body {
 .album {
   float: left;
   padding: 10px 10px 0 0;
+  position: relative;
   .name {
     width: 300px;
     overflow: hidden;
@@ -30,5 +31,15 @@ body {
     width: 300px;
     height: 300px;
     border: 5px solid black;
+      .donate {
+        display: none;
+        position: absolute;
+        left: 122px;
+        bottom: 50px;
+      }
+    &:hover .donate {
+      display: block;
+      cursor: pointer;
+    }
   }
 }
