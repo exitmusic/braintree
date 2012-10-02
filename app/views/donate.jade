@@ -3,13 +3,14 @@ extends templates/standard
 block append css
 
 block content
-  h1 You Are Too Kind
-  form#payment-form(action="#{braintreeUrl}", method="POST")
-    input(type="hidden", name="tr_data", value="#{trData}")
-    div
-      h2 Credit Card
-      label(for="braintree_credit_card_number") Credit Card Number
-      input#braintree_credit_card_number(type="text", name="transaction[credit_card][number]", value="4111111111111111")
-      label(for="braintree_credit_card_exp") Credit Card Expiry (mm/yyyy)
-      input#braintree_credit_card_exp(type="text", name="transaction[credit_card][expiration_date]", value="12/2015")
-    input.submit-button(type="submit")
+  .donate-content
+    form#payment-form(action="#{braintreeUrl}", method="POST")
+      input(type="hidden", name="tr_data", value="#{trData}")
+      div
+        label(for="braintree_credit_card_number") Credit Card Number
+        input#braintree_credit_card_number(type="text", name="transaction[credit_card][number]", value="4111111111111111")
+        label(for="braintree_credit_card_exp") Credit Card Expiry (mm/yyyy)
+        input#braintree_credit_card_exp(type="text", name="transaction[credit_card][expiration_date]", value="12/2015")
+        label(for="braintree_amount") Donation Amount
+        input#braintree_amount(type="text", name="transaction[amount]")
+        

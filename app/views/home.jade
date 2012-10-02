@@ -16,3 +16,12 @@ block content
           img(src="#{album.image[3]['#text']}")
           .donate
             a.donate-cash.btn.btn-inverse(href="donate") Donate
+  .modal.hide.fade(aria-hidden="true")
+    .modal-header
+      button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+      h3 Donate
+    .modal-body
+      p The donate page did not load correctly.
+    .modal-footer
+      button.btn(data-dismiss="modal", aria-hidden="true") Close
+      button#submit-donation.btn.btn-primary Save changes

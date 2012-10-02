@@ -2,6 +2,21 @@ var url = require('url')
   , braintree = require('braintree')
   , Albums = require('../models/albums');
 
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "p7rgv3p9yvf8r26q",
+  publicKey: "svkhxft4s5rhhmr7",
+  privateKey: "ad2cf98015cfdb144942baac8ff9f072"
+});
+var trData = gateway.transparentRedirect.transactionData({
+  redirectUrl: 'http://localhost:3000/thanks',
+    transaction: {
+      type: 'sale',
+      //amount: '10000.00', // allow users to specify donation amount
+      options: {submitForSettlement: true}
+    }
+});
+
 function routes(app) {
   /**
    * Route to Homepage
@@ -51,21 +66,6 @@ function routes(app) {
    * Route to Donate page
    */
   app.get('/donate', function(req, res) {
-    var gateway = braintree.connect({
-      environment: braintree.Environment.Sandbox,
-      merchantId: "p7rgv3p9yvf8r26q",
-      publicKey: "svkhxft4s5rhhmr7",
-      privateKey: "ad2cf98015cfdb144942baac8ff9f072"
-    });
-    var trData = gateway.transparentRedirect.transactionData({
-      redirectUrl: 'http://localhost:3000/thanks',
-        transaction: {
-          type: 'sale',
-          amount: '10000.00',
-          options: {submitForSettlement: true}
-        }
-    });
-
     res.render('donate', {
       title: 'Donate',
       trData: trData, 
@@ -77,8 +77,20 @@ function routes(app) {
    * Route to Thanks page
    */
   app.get('/thanks', function(req, res) {
-    res.render('thanks', {
-      title: 'Thank You!'
+
+    gateway.transparentRedirect.confirm(req._parsedUrl.query, function (err, result) {
+      var message;
+      if (result.success) {
+        message = "Transaction Successful";
+      }
+      else {
+        message = JSON.stringify(result.errors, null, 2);
+      }
+      res.render('thanks', {
+        title: 'Thank You!',
+        result: result, 
+        message: message
+      });
     });
   });
 }
