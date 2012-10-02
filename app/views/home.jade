@@ -10,7 +10,7 @@ block content
   .albums-list
     each album in albumsJSON
       .album
-        h5.name(title="#{album.name}") #{album.name}
+        h4.name(title="#{album.name}") #{album.name}
         h5.artist #{album.artist.name}
         .cover
           img(src="#{album.image[3]['#text']}")
@@ -24,4 +24,4 @@ block content
       p The donate page did not load correctly.
     .modal-footer
       button.btn(data-dismiss="modal", aria-hidden="true") Close
-      button#submit-donation.btn.btn-primary Save changes
+      button#submit-donation.btn.btn-primary Submit Donation
