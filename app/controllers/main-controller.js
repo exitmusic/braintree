@@ -48,11 +48,37 @@ function routes(app) {
   });
 
   /**
+   * Route to Donate page
+   */
+  app.get('/donate', function(req, res) {
+    var gateway = braintree.connect({
+      environment: braintree.Environment.Sandbox,
+      merchantId: "p7rgv3p9yvf8r26q",
+      publicKey: "svkhxft4s5rhhmr7",
+      privateKey: "ad2cf98015cfdb144942baac8ff9f072"
+    });
+    var trData = gateway.transparentRedirect.transactionData({
+      redirectUrl: 'http://localhost:3000/thanks',
+        transaction: {
+          type: 'sale',
+          amount: '10000.00',
+          options: {submitForSettlement: true}
+        }
+    });
+
+    res.render('donate', {
+      title: 'Donate',
+      trData: trData, 
+      braintreeUrl: gateway.transparentRedirect.url,
+    });
+  });
+
+  /**
    * Route to Thanks page
    */
   app.get('/thanks', function(req, res) {
     res.render('thanks', {
-        title: 'Thank You!'
+      title: 'Thank You!'
     });
   });
 }
@@ -65,28 +91,11 @@ function routes(app) {
  * @param {Array} params.albumJSON A JSON object containing to top albums
  */
 function renderAlbums(req, res, params) {
-  var gateway = braintree.connect({
-    environment: braintree.Environment.Sandbox,
-    merchantId: "p7rgv3p9yvf8r26q",
-    publicKey: "svkhxft4s5rhhmr7",
-    privateKey: "ad2cf98015cfdb144942baac8ff9f072"
-  });
-  var trData = gateway.transparentRedirect.transactionData({
-    redirectUrl: 'http://localhost:3000/thanks',
-      transaction: {
-        type: 'sale',
-        amount: '10000.00',
-        options: {submitForSettlement: true}
-      }
-  });
-
   res.render('home', {
     title: 'Buy Me Music',
     me: params.me,
     you: params.you,
-    albumsJSON: params.albumsJSON,
-    trData: trData, 
-    braintreeUrl: gateway.transparentRedirect.url,
+    albumsJSON: params.albumsJSON
   });
 }
 

@@ -2,6 +2,6 @@ body{font-family:'Raleway',sans-serif;}
 .lastfm-username button{margin-left:5px;}
 .albums-list:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
 .album{float:left;padding:10px;position:relative;border-radius:4px;transition-property:background-color,color;-moz-transition-property:background-color,color;-webkit-transition-property:background-color,color;transition-duration:.3s;-moz-transition-duration:.3s;-webkit-transition-duration:.3s;transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-webkit-transition-timing-function:ease-out;}.album .name{width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.album .cover{width:300px;height:300px;border:5px solid black;opacity:.95;transition:opacity 0.25s ease-in-out;-moz-transition:opacity 0.25s ease-in-out;-webkit-transition:opacity 0.25s ease-in-out;}.album .cover .donate{display:none;position:absolute;left:122px;bottom:50px;}
+.album .cover{width:300px;height:300px;border:5px solid black;opacity:.95;transition:opacity 0.25s ease-in-out;-moz-transition:opacity 0.25s ease-in-out;-webkit-transition:opacity 0.25s ease-in-out;}.album .cover .donate{display:none;position:absolute;left:127px;bottom:50px;}
 .album .cover:hover .donate{display:block;cursor:pointer;}
 .album:hover{background-color:black;color:white;}.album:hover .cover{opacity:1;}
