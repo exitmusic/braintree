@@ -82,9 +82,11 @@ function renderAlbums(req, res, params) {
 
   res.render('home', {
     title: 'Buy Me Music',
+    me: params.me,
+    you: params.you,
+    albumsJSON: params.albumsJSON,
     trData: trData, 
     braintreeUrl: gateway.transparentRedirect.url,
-    albumsJSON: params.albumsJSON
   });
 }
 

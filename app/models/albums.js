@@ -30,7 +30,7 @@ Albums.prototype.getAlbums = function(req, res, cb) {
 
     //the whole response has been recieved, so we just print it out here
     response.on('end', function () {
-      viewCallback(req, res, {albumsJSON: JSON.parse(str).topalbums.album});
+      viewCallback(req, res, {me: "exitmusick", you: username, albumsJSON: JSON.parse(str).topalbums.album});
     });
   };
 

@@ -3,6 +3,10 @@ extends templates/standard
 block append css
 
 block content
+  if me === you 
+    h1 My Most Listened To Albums (#{me})
+  else
+    h1 Your Most Listened To Albums (#{you})
   .albums-list
     each album in albumsJSON
       .album
@@ -10,6 +14,8 @@ block content
         h5.artist #{album.artist.name}
         .cover
           img(src="#{album.image[3]['#text']}")
+        .donate
+          a.donate-cash(href="#") Donate
 
   h1 Braintree Credit Card Transaction Form
   form#payment-form(action="#{braintreeUrl}", method="POST")
