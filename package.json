@@ -13,6 +13,7 @@
     "express": "3.0.0rc4",
     "jade": "*",
     "less-middleware": "*",
-    "braintree": "*"
+    "braintree": "*",
+    "underscore": "1.4.1"
   }
 }
