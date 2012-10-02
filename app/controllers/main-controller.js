@@ -9,12 +9,13 @@ var gateway = braintree.connect({
   privateKey: "ad2cf98015cfdb144942baac8ff9f072"
 });
 var trData = gateway.transparentRedirect.transactionData({
-  redirectUrl: 'http://localhost:3000/thanks',
-    transaction: {
-      type: 'sale',
-      //amount: '10000.00', // allow users to specify donation amount
-      options: {submitForSettlement: true}
-    }
+  redirectUrl: 'http://localhost:3000/thanks', 
+  //redirectUrl: 'http://robot-music.jit.su/thanks', // for deployment on nodejitsu
+  transaction: {
+    type: 'sale',
+    //amount: '10000.00', // allow users to specify donation amount
+    options: {submitForSettlement: true}
+  }
 });
 
 function routes(app) {
