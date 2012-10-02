@@ -1,4 +1,5 @@
-var braintree = require('braintree')
+var url = require('url')
+  , braintree = require('braintree')
   , Albums = require('../models/albums');
 
 function routes(app) {
@@ -6,11 +7,28 @@ function routes(app) {
    * Route to Homepage
    */
   app.get('/', function(req, res) {
-    var albumsList = new Albums('exitmusick', renderAlbums);
-    
+    var albumsList = new Albums("exitmusick", renderAlbums);
+
     albumsList.getAlbums(req, res);
   });
-  
+
+   /**
+   * View another user's top albums
+   */ 
+  app.get('/view', function(req, res) {
+    var albumsList
+      , queryUrl
+      , username;
+    
+    //Get the query string portion of the URL from the parsed URL object
+    queryUrl = url.parse(req.url, true).query;
+
+    // Get the username value from the query string
+    username = queryUrl.username.trim();
+    albumsList = new Albums(username, renderAlbums);
+    albumsList.getAlbums(req, res);
+  });
+
   /**
    * Route to About page
    */

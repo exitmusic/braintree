@@ -13,10 +13,11 @@ Albums.prototype.getAlbums = function(req, res, cb) {
   //API secret: 7e12ae370041350ab556107d869dd59c
 
   var viewCallback = this.view;
+  var username = this.user;
 
   var options = {
     host: 'ws.audioscrobbler.com',
-    path: '/2.0/?method=user.gettopalbums&user=exitmusick&api_key=c0335ebae11bfd93e2910dd2f061a8c3&format=json'
+    path: '/2.0/?method=user.gettopalbums&user='+username+'&api_key=c0335ebae11bfd93e2910dd2f061a8c3&format=json'
   };
 
   var callback = function(response) {

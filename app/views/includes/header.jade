@@ -14,3 +14,11 @@
             a(href="/about") About
           li
             a(href="/contact") Contact
+
+      .lastfm-username
+        form.navbar-form.pull-right(action="/view")
+          input#username.span2(name="username", type="text", placeholder="last.fm username")
+          button.btn(type="submit") Submit
+
+  .username
+    form(action="/view")
