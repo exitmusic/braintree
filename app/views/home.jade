@@ -10,7 +10,7 @@ block content
   .albums-list
     each album in albumsJSON
       .album
-        h5.name #{album.name}
+        h5.name(title="#{album.name}") #{album.name}
         h5.artist #{album.artist.name}
         .cover
           img(src="#{album.image[3]['#text']}")
